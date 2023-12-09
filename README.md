@@ -40,6 +40,40 @@ But in this tutorial, we will use Docker to run Redis.
 make build
 ```
 
+# Basic Operations in Redis
+
+1. Set data
+
+```go
+err := client.Set(ctx, "key", "value", 0).Err()
+if err != nil {
+	fmt.Println("Error setting key:", err)
+	return
+}
+```
+
+2. Get data
+
+```go
+val, err := client.Get(ctx, "key").Result()
+if err != nil {
+	fmt.Println("Error getting key:", err)
+	return
+}
+
+fmt.Println("Key value:", val)
+```
+
+3. Delete data
+
+```go
+err := client.Del(ctx, "key").Err()
+if err != nil {
+	fmt.Println("Error deleting key:", err)
+	return
+}
+```
+
 # Usage
 
 1. Run the application in local
